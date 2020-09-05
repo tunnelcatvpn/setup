@@ -19,11 +19,11 @@ wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
 # Running the Script
 Run this command and follow the installation:
 ```
-
+wget https://github.com/tunnelcatvpn/setup/raw/master/setup.sh -O setup.sh && sudo bash setup.sh
 ```
 
 # Uninstall
 Run this command:
 ```
-
+wget https://raw.githubusercontent.com/tunnelcatvpn/setup/master/uninstall.sh -O uninstall.sh && sudo bash uninstall.sh
 ```
