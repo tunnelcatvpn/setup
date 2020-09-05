@@ -10,7 +10,7 @@ echo 'Script Version: 0.1'
 echo 'Updated on: 9/5/2020'
 
 # Verify Distro
-if [[ $DISTRO != "ubuntu" || $DISTRO != "debian" ]]; then
+if ![[ $DISTRO == "ubuntu" || $DISTRO == "debian" ]]; then
 	echo 'This script works only on Debian/Ubuntu OS'
 	exit 1
 fi
