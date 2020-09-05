@@ -36,7 +36,7 @@ if ! [[ $SERVER_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 	exit 1
 fi
 
-if ! [[ $OPENVPN_PORT =~ '^[0-9]+$' || $OHP_PORT =~ '^[0-9]+$' || $PRIVOXY_PORT =~ '^[0-9]+$' || $STUNNEL_PORT =~ '^[0-9]+$' ]]; then
+if ! [[ $OPENVPN_PORT =~ ^[0-9]+$ || $OHP_PORT =~ ^[0-9]+$ || $PRIVOXY_PORT =~ ^[0-9]+$ || $STUNNEL_PORT =~ ^[0-9]+$ ]]; then
 	echo 'Port is invalid'
 	exit 1
 fi
