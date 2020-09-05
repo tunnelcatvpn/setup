@@ -10,7 +10,7 @@ echo 'Script Version: 0.1'
 echo 'Updated on: 9/5/2020'
 
 # Verify Distro
-if ![[ $DISTRO == "ubuntu" || $DISTRO == "debian" ]]; then
+if ! [[ $DISTRO == "ubuntu" || $DISTRO == "debian" ]]; then
 	echo 'This script works only on Debian/Ubuntu OS'
 	exit 1
 fi
@@ -22,7 +22,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Read Input
-read -e -p 'Input your Server IP: ' -i '$SERVER_IP' SERVER_IP
+read -e -p 'Input your Server IP: ' -i $SERVER_IP SERVER_IP
 read -e -p 'Input OpenVPN TCP Port: ' -i '1194' OPENVPN_PORT
 read -e -p 'Input Privoxy Port: ' -i '8080' PRIVOXY_PORT
 read -e -p 'Input ohpserver Port: ' -i '80' OHP_PORT
@@ -31,12 +31,12 @@ read -e -p 'Input DNS Tunnel Domain: ' -i 'dns.tunnel.example.com' DNS_TUNNEL_DO
 
 # Check input
 echo 'Checking Input...'
-if ![[ $SERVER_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if ! [[ $SERVER_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 	echo 'Server IP is invalid'
 	exit 1
 fi
 
-if ![[ $OPENVPN_PORT =~ '^[0-9]+$' || $OHP_PORT =~ '^[0-9]+$' || $PRIVOXY_PORT =~ '^[0-9]+$' || $STUNNEL_PORT =~ '^[0-9]+$' ]]; then
+if ! [[ $OPENVPN_PORT =~ '^[0-9]+$' || $OHP_PORT =~ '^[0-9]+$' || $PRIVOXY_PORT =~ '^[0-9]+$' || $STUNNEL_PORT =~ '^[0-9]+$' ]]; then
 	echo 'Port is invalid'
 	exit 1
 fi
