@@ -211,10 +211,10 @@ echo ''
 echo ''
 echo 'Installation Information'
 echo '##############################'
-echo 'Server IP: $SERVER_IP'
-echo 'OpenVPN Port: $OPENVPN_PORT'
-echo 'HTTP Port: $PRIVOXY_PORT'
-echo 'OHP Port: $OHP_PORT'
-echo 'stunnel Port: $STUNNEL_PORT'
-echo 'DNS Tunnel Domain: $DNS_TUNNEL_DOMAIN'
+echo 'Server IP:' $SERVER_IP
+echo 'OpenVPN Port:' $OPENVPN_PORT
+echo 'HTTP Port:' $PRIVOXY_PORT
+echo 'OHP Port:' $OHP_PORT
+echo 'stunnel Port:' $STUNNEL_PORT
+echo 'DNS Tunnel Domain:' $DNS_TUNNEL_DOMAIN
 echo '##############################'
