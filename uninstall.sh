@@ -7,7 +7,7 @@ DISTRO=`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`
 echo 'Welcome to TunnelCat VPN Uninstall Script'
 
 # Verify Distro
-if [[ $DISTRO != "ubuntu" || $DISTRO != "debian" ]]; then
+if ! [[ $DISTRO == "ubuntu" || $DISTRO == "debian" ]]; then
 	echo 'This script works only on Debian/Ubuntu OS'
 	exit 1
 fi
