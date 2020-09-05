@@ -18,17 +18,25 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+if ! test -f "/root/.tcat_installed"; then
+	echo 'TunnelCat VPN Software is not installed!'
+	exit 1
+fi
+
 echo 'Uninstalling using APT'
 DEBIAN_FRONTEND=noninteractive apt purge privoxy dns2tcp stunnel -y
 
+# Uninstall software packages
 echo 'Uninstalling TunnelCat VPN software'
 systemctl stop ohpserver
 rm /usr/local/bin/ohpserver
 rm /etc/systemd/system/ohpserver.service
 systemctl daemon-reload
 
+# Removing Configurations
 echo 'Removing configurations'
 rm -rf /etc/dns2tcp/
 rm -rf /etc/stunnel/
+rm /root/.tcat_installed
 
 echo 'Uninstall Complete'

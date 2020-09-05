@@ -21,6 +21,12 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+
+if test -f "/root/.tcat_installed"; then
+	echo 'TunnelCat VPN Software already installed!'
+	exit 1
+fi
+
 # Read Input
 read -e -p 'Input your Server IP: ' -i $SERVER_IP SERVER_IP
 read -e -p 'Input OpenVPN TCP Port: ' -i '1194' OPENVPN_PORT
@@ -206,6 +212,10 @@ echo 'Start services on boot'
 systemctl enable stunnel4
 systemctl enable privoxy
 systemctl enable ohpserver
+
+
+# Installed
+echo '' > /root/.tcat_installed
 
 # Installation Completed
 echo 'Installation Completed!'
