@@ -58,6 +58,7 @@ chmod +x /usr/local/bin/ohpserver
 
 # Setup Privoxy
 echo 'Setting up Privoxy'
+mkdir /etc/privoxy/
 cat <<EOF > /etc/privoxy/config
 user-manual /usr/share/doc/privoxy/user-manual
 confdir /etc/privoxy
@@ -99,6 +100,7 @@ EOF
 # Setup Stunnel
 echo 'Setting up Stunnel'
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+mkdir /etc/stunnel/
 
 cat <<EOF > /etc/stunnel/stunnel.conf
 client = no
