@@ -185,8 +185,7 @@ WantedBy=multi-user.target
 EOF
 
 echo 'Setup dns2tcp'
-mkdir /etc/dns2tcp/
-cat <<EOF > /etc/dns2tcp/server.conf
+cat <<EOF > /etc/dns2tcpd.conf
 listen = 0.0.0.0
 port = 53
 user = nobody
@@ -205,12 +204,13 @@ systemctl restart stunnel4
 systemctl restart privoxy
 systemctl start ohpserver
 systemctl stop systemd-resolved
-dns2tcpd -d 1 -f /etc/dns2tcp/server.conf
+systemctl start dns2tcp
 
 # Enable on boot
 echo 'Start services on boot'
 systemctl enable stunnel4
 systemctl enable privoxy
+systemctl enable dns2tcp
 systemctl enable ohpserver
 
 
