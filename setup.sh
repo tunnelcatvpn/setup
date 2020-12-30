@@ -2,20 +2,20 @@
 # file: setup.sh
 
 DISTRO=`awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`
-SERVER_IP=`ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'`
+SERVER_IP=`ip -o route get to 172.217.11.35 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'`
 
-# Welcome Message
+# Welcome Message:
 echo 'Welcome to TunnelCat VPN Setup Script'
 echo 'Script Version: 0.1'
-echo 'Updated on: 9/5/2020'
+echo 'Updated on: 12/29/2020'
 
-# Verify Distro
+# Verify Distro:
 if ! [[ $DISTRO == "ubuntu" || $DISTRO == "debian" ]]; then
 	echo 'This script works only on Debian/Ubuntu OS'
 	exit 1
 fi
 
-# Check if root
+# Check if root:
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
@@ -27,7 +27,7 @@ if test -f "/root/.tcat_installed"; then
 	exit 1
 fi
 
-# Read Input
+# Read Input:
 read -e -p 'Input your Server IP: ' -i $SERVER_IP SERVER_IP
 read -e -p 'Input OpenVPN TCP Port: ' -i '1194' OPENVPN_PORT
 read -e -p 'Input Privoxy Port: ' -i '8080' PRIVOXY_PORT
@@ -197,7 +197,8 @@ EOF
 
 # Start Services
 echo 'Running Services'
-echo "nameserver 8.8.8.8" > /etc/resolvconf/resolv.conf.d/head
+echo "nameserver 172.217.11.35
+" > /etc/resolvconf/resolv.conf.d/head
 systemctl daemon-reload
 systemctl restart resolvconf
 systemctl restart stunnel4
